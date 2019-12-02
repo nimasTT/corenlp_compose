@@ -1,0 +1,29 @@
+# This dockerfile is inspired by https://github.com/motiz88/corenlp-docker/blob/master/Dockerfile
+#https://github.com/NLPbox/stanford-corenlp-docker/blob/master/Dockerfile
+#docker build -t nimas/corenlp_multilang .
+
+FROM alpine:3.10 as builder
+
+RUN apk update && apk add wget unzip 
+
+WORKDIR /opt
+RUN wget http://nlp.stanford.edu/software/stanford-corenlp-full-2018-10-05.zip && \
+    unzip stanford-corenlp-full-*.zip && \
+    mv $(ls -d stanford-corenlp-full-*/) corenlp && rm *.zip
+
+WORKDIR /opt/corenlp
+RUN wget http://nlp.stanford.edu/software/stanford-french-corenlp-models-current.jar
+
+
+FROM alpine:3.10
+
+RUN apk update && apk add openjdk11-jre-headless
+
+WORKDIR /opt/corenlp
+
+COPY --from=builder /opt/corenlp .
+
+ENV PORT 9000
+EXPOSE $PORT
+
+CMD java -Xmx2g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000 -timeout 15000

@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+    en:
+        build:
+            context: .
+            dockerfile: Dockerfile-en
+        image: corenlp_en:latest
+        ports:
+            - "9001:9000"
+    de:
+        build:
+            context: .
+            dockerfile: Dockerfile-de
+        image: corenlp_de:latest
+        ports:
+            - "9002:9000"
+    fr:
+        build:
+            context: .
+            dockerfile: Dockerfile-fr
+        image: corenlp_fr:latest
+        ports:
+            - "9003:9000"
+    es:
+        build:
+            context: .
+            dockerfile: Dockerfile-es
+        image: corenlp_es:latest
+        ports:
+            - "9004:9000"
