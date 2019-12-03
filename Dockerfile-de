@@ -1,14 +1,12 @@
 # This dockerfile is inspired by https://github.com/motiz88/corenlp-docker/blob/master/Dockerfile
 #https://github.com/NLPbox/stanford-corenlp-docker/blob/master/Dockerfile
-#docker build -t nimas/corenlp_multilang .
 
 FROM alpine:3.10 as builder
 
 RUN apk update && apk add wget unzip 
 
 WORKDIR /opt
-#RUN wget http://nlp.stanford.edu/software/stanford-corenlp-full-2018-10-05.zip && \
- RUN wget https://github.com/stanfordnlp/CoreNLP/releases/tag/v3.9.2 && \
+RUN wget https://github.com/stanfordnlp/CoreNLP/archive/v3.9.2.zip && \
     unzip CoreNLP-*.zip && \
     mv $(ls -d CoreNLP-*/) corenlp && rm *.zip
 
