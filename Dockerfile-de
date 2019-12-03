@@ -7,7 +7,7 @@ RUN apk update && apk add wget unzip
 
 WORKDIR /opt
 RUN wget https://github.com/stanfordnlp/CoreNLP/archive/v3.9.2.zip && \
-    unzip CoreNLP-*.zip && \
+    unzip v*.zip && \
     mv $(ls -d CoreNLP-*/) corenlp && rm *.zip
 
 WORKDIR /opt/corenlp
