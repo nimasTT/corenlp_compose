@@ -7,9 +7,10 @@ FROM alpine:3.10 as builder
 RUN apk update && apk add wget unzip 
 
 WORKDIR /opt
-RUN wget http://nlp.stanford.edu/software/stanford-corenlp-full-2018-10-05.zip && \
-    unzip stanford-corenlp-full-*.zip && \
-    mv $(ls -d stanford-corenlp-full-*/) corenlp && rm *.zip
+#RUN wget http://nlp.stanford.edu/software/stanford-corenlp-full-2018-10-05.zip && \
+ RUN wget https://github.com/stanfordnlp/CoreNLP/releases/tag/v3.9.2 && \
+    unzip CoreNLP-*.zip && \
+    mv $(ls -d CoreNLP-*/) corenlp && rm *.zip
 
 WORKDIR /opt/corenlp
 RUN wget http://nlp.stanford.edu/software/stanford-german-corenlp-models-current.jar
