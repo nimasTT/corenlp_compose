@@ -6,6 +6,7 @@ services:
             context: .
             dockerfile: Dockerfile-en
         image: corenlp_en:latest
+        restart: always
         ports:
             - "9001:9000"
     de:
@@ -13,6 +14,7 @@ services:
             context: .
             dockerfile: Dockerfile-de
         image: corenlp_de:latest
+        restart: always
         ports:
             - "9002:9000"
     fr:
@@ -20,6 +22,7 @@ services:
             context: .
             dockerfile: Dockerfile-fr
         image: corenlp_fr:latest
+        restart: always
         ports:
             - "9003:9000"
     es:
@@ -27,5 +30,6 @@ services:
             context: .
             dockerfile: Dockerfile-es
         image: corenlp_es:latest
+        restart: always
         ports:
             - "9004:9000"
