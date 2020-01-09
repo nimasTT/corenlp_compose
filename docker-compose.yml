@@ -8,7 +8,7 @@ services:
         image: corenlp_en:latest
         restart: always
         ports:
-            - "9001:9000"
+            - "9000:9000"
     de:
         build:
             context: .
@@ -16,7 +16,7 @@ services:
         image: corenlp_de:latest
         restart: always
         ports:
-            - "9002:9000"
+            - "9001:9000"
     fr:
         build:
             context: .
@@ -24,7 +24,7 @@ services:
         image: corenlp_fr:latest
         restart: always
         ports:
-            - "9003:9000"
+            - "9002:9000"
     es:
         build:
             context: .
@@ -32,4 +32,4 @@ services:
         image: corenlp_es:latest
         restart: always
         ports:
-            - "9004:9000"
+            - "9003:9000"
